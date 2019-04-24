@@ -75,6 +75,18 @@ class GameProblem(SearchProblem):
         '''Returns true if state is the final state
         '''
         print('is_goal(state=', state, ')\n')
+
+        # See how many deliveries are necessary
+        if(len(self.CUSTOMERS) <= 0):
+            return True
+
+        self.GOAL = self.CUSTOMERS[0]
+
+        # See if current state is a customer
+        if(state in self.CUSTOMERS):
+            self.CUSTOMERS.remove(state)
+            return True
+
         return False
 
     def cost(self, state, action, state2):
@@ -89,10 +101,16 @@ class GameProblem(SearchProblem):
         '''Returns the heuristic for `state`
         '''
         print('heuristic(state=', state, ')\n')
-        #xDiff = abs(state[0] - self.final_state[0])
-        #yDiff = abs(state[1] - self.final_state[1])
+        x = state[0]
+        y = state[1]
 
-        return 0
+        if(self.GOAL == None):
+            return 0
+
+        xDiff = abs(x - self.GOAL[0])
+        yDiff = abs(y - self.GOAL[1])
+
+        return xDiff + yDiff
 
 
     def setup (self):
@@ -118,7 +136,7 @@ class GameProblem(SearchProblem):
         self.SHOPS = self.POSITIONS['building']
         print('SHOPS: ', self.SHOPS, '\n')
 
-        self.CUSTOMERS = self.POSITIONS['customer1']
+        self.CUSTOMERS = self.POSITIONS['customer1'] + self.POSITIONS['customer2']
         print('CUSTOMERS: ', self.CUSTOMERS, '\n')
 
         self.MAXBAGS = 2 # Defined by problem 1
@@ -138,7 +156,11 @@ class GameProblem(SearchProblem):
             This information is used to show the proper customer image.
         '''
         print('getPendingRequests(state=', state, ')\n')
-        return None
+
+        if(state not in self.CUSTOMERS):
+            return -1 #None # TODO: python2.7
+
+        return 0
 
     # -------------------------------------------------------------- #
     # --------------- DO NOT EDIT BELOW THIS LINE  ----------------- #
