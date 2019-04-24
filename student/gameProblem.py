@@ -68,9 +68,9 @@ class GameProblem(SearchProblem):
            It also must set the values of the object attributes that the methods need, as for example, self.SHOPS or self.MAXBAGS
         '''
 
-        print( '\nMAP: ', self.MAP, '\n')
-	print( 'POSITIONS: ', self.POSITIONS, '\n')
-	print( 'CONFIG: ', self.CONFIG, '\n')
+        print('\nMAP: ', self.MAP, '\n')
+        print('POSITIONS: ', self.POSITIONS, '\n')
+        print('CONFIG: ', self.CONFIG, '\n')
 
         initial_state = None
         final_state= None
