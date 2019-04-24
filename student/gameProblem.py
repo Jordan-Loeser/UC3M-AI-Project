@@ -29,7 +29,23 @@ class GameProblem(SearchProblem):
     def actions(self, state):
         '''Returns a LIST of the actions that may be executed in this state
         '''
-        acciones = []
+        print('actions(state=', state, ')\n')
+        acciones = [] # 'West','North','East','South'
+
+        # Determine which actions are valid
+        x = state[0]
+        y = state[1]
+        maxX = self.CONFIG['map_size'][0]
+        maxY = self.CONFIG['map_size'][1]
+
+        if(x > 0):
+            acciones.append('East')
+        if(y > 0):
+            acciones.append('North')
+        if(x < maxX):
+            acciones.append('West')
+        if(y < maxY):
+            acciones.append('South')
 
         return acciones
 
@@ -37,7 +53,20 @@ class GameProblem(SearchProblem):
     def result(self, state, action):
         '''Returns the state reached from this state when the given action is executed
         '''
-        next_state = 0
+        print('result(state=', state, ', action=', action, ')\n')
+
+        # Implement State Changes
+        x = state[0]
+        y = state[1]
+
+        if(action == 'West'):
+            next_state = (x+1, y)
+        elif(action == 'South'):
+            next_state = (x, y+1)
+        elif(action == 'East'):
+            next_state = (x-1, y)
+        elif(action == 'North'):
+            next_state = (x, y-1)
 
         return next_state
 
@@ -45,18 +74,24 @@ class GameProblem(SearchProblem):
     def is_goal(self, state):
         '''Returns true if state is the final state
         '''
-        return True
+        print('is_goal(state=', state, ')\n')
+        return False
 
     def cost(self, state, action, state2):
         '''Returns the cost of applying `action` from `state` to `state2`.
            The returned value is a number (integer or floating point).
            By default this function returns `1`.
         '''
+        print('cost(state=', state, ', action=', action, ', state2=', state2, ')\n')
         return 1
 
     def heuristic(self, state):
         '''Returns the heuristic for `state`
         '''
+        print('heuristic(state=', state, ')\n')
+        #xDiff = abs(state[0] - self.final_state[0])
+        #yDiff = abs(state[1] - self.final_state[1])
+
         return 0
 
 
@@ -72,17 +107,27 @@ class GameProblem(SearchProblem):
         print('POSITIONS: ', self.POSITIONS, '\n')
         print('CONFIG: ', self.CONFIG, '\n')
 
-        initial_state = None
+        initial_state = self.AGENT_START
         final_state= None
+
         algorithm= simpleai.search.astar
         #algorithm= simpleai.search.breadth_first
         #algorithm= simpleai.search.depth_first
         #algorithm= simpleai.search.limited_depth_first
 
+        self.SHOPS = self.POSITIONS['building']
+        print('SHOPS: ', self.SHOPS, '\n')
+
+        self.CUSTOMERS = self.POSITIONS['customer1']
+        print('CUSTOMERS: ', self.CUSTOMERS, '\n')
+
+        self.MAXBAGS = 2 # Defined by problem 1
+
         return initial_state,final_state,algorithm
 
-    def printState (self,state):
+    def printState (self, state):
         '''Return a string to pretty-print the state '''
+        print('printState(state=', state, ')\n')
 
         pps=''
         return (pps)
@@ -92,6 +137,7 @@ class GameProblem(SearchProblem):
             MUST return None if the position is not a customer.
             This information is used to show the proper customer image.
         '''
+        print('getPendingRequests(state=', state, ')\n')
         return None
 
     # -------------------------------------------------------------- #
