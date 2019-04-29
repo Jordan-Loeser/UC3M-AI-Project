@@ -59,6 +59,7 @@ class GameProblem(SearchProblem):
         x = state[0]
         y = state[1]
 
+        # Check Bounds of Map
         if(action == 'West'):
             next_state = (x+1, y)
         elif(action == 'South'):
@@ -67,6 +68,8 @@ class GameProblem(SearchProblem):
             next_state = (x-1, y)
         elif(action == 'North'):
             next_state = (x, y-1)
+
+        # TODO: Check building obstacles
 
         return next_state
 
@@ -107,6 +110,7 @@ class GameProblem(SearchProblem):
         if(self.GOAL == None):
             return 0
 
+        # Use Manhattan Heuristic
         xDiff = abs(x - self.GOAL[0])
         yDiff = abs(y - self.GOAL[1])
 
