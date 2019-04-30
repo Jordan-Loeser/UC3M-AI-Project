@@ -152,9 +152,7 @@ class GameProblem(SearchProblem):
 
     def printState (self, state):
         '''Return a string to pretty-print the state '''
-        print('printState(state=', state, ')\n')
-
-        pps='state='
+        pps='pos=' + str(state[0]) + ' , numPizzas=' + str(state[1]) + ' , numCustomers=' + str(state[2])
         return (pps)
 
     def getPendingRequests (self,state):
