@@ -22,7 +22,7 @@ class GameProblem(SearchProblem):
     CUSTOMERS=None
     MAXBAGS = 0
 
-    MOVES = ('West','North','East','South')
+    MOVES = ('West','North','East','South','Load','Drop')
 
    # --------------- Common functions to a SearchProblem -----------------
 
@@ -30,23 +30,29 @@ class GameProblem(SearchProblem):
         '''Returns a LIST of the actions that may be executed in this state
         '''
         print('actions(state=', state, ')\n')
-        acciones = [] # 'West','North','East','South'
+        acciones = [] # 'West','North','East','South','Load','Drop'
 
         # Determine which actions are valid
-        x = state[0]
-        y = state[1]
+        x = state[0][0]
+        y = state[0][1]
         maxX = self.CONFIG['map_size'][0]
         maxY = self.CONFIG['map_size'][1]
 
-        if(x > 0):
-            acciones.append('East')
-        if(y > 0):
-            acciones.append('North')
-        if(x < maxX):
-            acciones.append('West')
-        if(y < maxY):
-            acciones.append('South')
+        buildings = self.POSITIONS['building']
+        buildings = self.POSITIONS['building']
 
+        if(x > 0 and (x-1, y) not in buildings): # | x
+            acciones.append('West') # <=
+        if(y > 0 and (x, y-1) not in buildings):
+            acciones.append('North')
+        if(x < maxX and (x+1, y) not in buildings): # x |
+            acciones.append('East') # =>
+        if(y < maxY and (x, y+1) not in buildings):
+            acciones.append('South')
+        if(state[1] < self.MAXBAGS and (x,y) in self.SHOPS):
+            acciones.append('Load')
+        if(state[1] > 0 and (x,y) in self.CUSTOMERS):
+            acciones.append('Drop')
         return acciones
 
 
@@ -56,22 +62,28 @@ class GameProblem(SearchProblem):
         print('result(state=', state, ', action=', action, ')\n')
 
         # Implement State Changes
-        x = state[0]
-        y = state[1]
+        x = state[0][0]
+        y = state[0][1]
 
         # Check Bounds of Map
-        if(action == 'West'):
-            next_state = (x+1, y)
+        next_pos = (x, y)
+        next_load = state[1]
+        next_customers = state[2]
+        if(action == 'East'):
+            next_pos = (x+1, y)
         elif(action == 'South'):
-            next_state = (x, y+1)
-        elif(action == 'East'):
-            next_state = (x-1, y)
+            next_pos = (x, y+1)
+        elif(action == 'West'):
+            next_pos = (x-1, y)
         elif(action == 'North'):
-            next_state = (x, y-1)
+            next_pos = (x, y-1)
+        elif(action == 'Load'):
+            next_load += 1
+        elif(action == 'Drop'):
+            next_load -= 1
+            next_customers -= 1
 
-        # TODO: Check building obstacles
-
-        return next_state
+        return (next_pos, next_load, next_customers)
 
 
     def is_goal(self, state):
@@ -80,15 +92,7 @@ class GameProblem(SearchProblem):
         print('is_goal(state=', state, ')\n')
 
         # See how many deliveries are necessary
-        if(len(self.CUSTOMERS) <= 0):
-            return True
-
-        self.GOAL = self.CUSTOMERS[0]
-
-        # See if current state is a customer
-        if(state in self.CUSTOMERS):
-            self.CUSTOMERS.remove(state)
-            return True
+        if state == self.GOAL: return True
 
         return False
 
@@ -97,24 +101,14 @@ class GameProblem(SearchProblem):
            The returned value is a number (integer or floating point).
            By default this function returns `1`.
         '''
-        print('cost(state=', state, ', action=', action, ', state2=', state2, ')\n')
+        #print('cost(state=', state, ', action=', action, ', state2=', state2, ')\n')
         return 1
 
     def heuristic(self, state):
         '''Returns the heuristic for `state`
         '''
-        print('heuristic(state=', state, ')\n')
-        x = state[0]
-        y = state[1]
-
-        if(self.GOAL == None):
-            return 0
-
-        # Use Manhattan Heuristic
-        xDiff = abs(x - self.GOAL[0])
-        yDiff = abs(y - self.GOAL[1])
-
-        return xDiff + yDiff
+        #print('heuristic(state=', state, ')\n')
+        return 0
 
 
     def setup (self):
@@ -129,21 +123,30 @@ class GameProblem(SearchProblem):
         print('POSITIONS: ', self.POSITIONS, '\n')
         print('CONFIG: ', self.CONFIG, '\n')
 
-        initial_state = self.AGENT_START
-        final_state= None
-
         algorithm= simpleai.search.astar
         #algorithm= simpleai.search.breadth_first
         #algorithm= simpleai.search.depth_first
         #algorithm= simpleai.search.limited_depth_first
 
-        self.SHOPS = self.POSITIONS['building']
+        self.MAXBAGS = 2
+        self.SHOPS = self.POSITIONS['pizza']
         print('SHOPS: ', self.SHOPS, '\n')
 
-        self.CUSTOMERS = self.POSITIONS['customer1'] + self.POSITIONS['customer2']
+        # Initialize Customers
+        # TODO: Keep track of how many pizzas a customer needs
+        self.CUSTOMERS = []
+        if 'customer0' in self.POSITIONS.keys():
+            self.CUSTOMERS += self.POSITIONS['customer0']
+        if 'customer1' in self.POSITIONS.keys():
+            self.CUSTOMERS += self.POSITIONS['customer1']
+        if 'customer2' in self.POSITIONS.keys():
+            self.CUSTOMERS += self.POSITIONS['customer2']
+        if 'customer3' in self.POSITIONS.keys():
+            self.CUSTOMERS += self.POSITIONS['customer3']
         print('CUSTOMERS: ', self.CUSTOMERS, '\n')
 
-        self.MAXBAGS = 2 # Defined by problem 1
+        initial_state = (self.AGENT_START, 0, len(self.CUSTOMERS)) # Note: will break if list is included
+        final_state= ((0,0),0,0)
 
         return initial_state,final_state,algorithm
 
@@ -151,7 +154,7 @@ class GameProblem(SearchProblem):
         '''Return a string to pretty-print the state '''
         print('printState(state=', state, ')\n')
 
-        pps=''
+        pps='state='
         return (pps)
 
     def getPendingRequests (self,state):
@@ -161,10 +164,7 @@ class GameProblem(SearchProblem):
         '''
         print('getPendingRequests(state=', state, ')\n')
 
-        if(state not in self.CUSTOMERS):
-            return -1 #None # TODO: python2.7
-
-        return 0
+        return -1 #None TODO: Python2.7
 
     # -------------------------------------------------------------- #
     # --------------- DO NOT EDIT BELOW THIS LINE  ----------------- #

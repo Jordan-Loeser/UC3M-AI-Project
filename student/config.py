@@ -1,9 +1,9 @@
 configuration = {
-"text_size": 300, 
-"tile_size": 80, 
+"text_size": 300,
+"tile_size": 80,
 "type": "load", #random
 "seed": None,
-"file": "./student/map.txt",
+"file": "./student/map1_basic.txt",
 "map_size": [10, 5],
 "delay": 0.1,
 "debugMap": False,
@@ -11,9 +11,9 @@ configuration = {
 "save": False, #True
 "hazards": False,
 "basicTile": "street",
-"maxBags": 2, 
+"maxBags": 2,
 "agent":{
-    "graphics":{ 
+    "graphics":{
         "default": "game/graphics/logistics/deliver103.jpg"
         },
     "id": "agent",
@@ -22,7 +22,7 @@ configuration = {
     },
 "maptiles": {
     "street": {
-        "graphics":{ 
+        "graphics":{
             "default": "game/graphics/logistics/street101.jpg",
             "traversed": "game/graphics/logistics/street101Traversed.jpg"
             },
@@ -35,7 +35,7 @@ configuration = {
             {"cost": 1},
         },
     "pizza": {
-        "graphics":{ 
+        "graphics":{
             "default": "game/graphics/logistics/pizza101.jpg",
             "traversed": "game/graphics/logistics/pizza101.jpg"
             },
@@ -48,7 +48,7 @@ configuration = {
             {"cost": 1},
         },
     "customer0": {
-        "graphics":{ 
+        "graphics":{
             "default": "game/graphics/logistics/customer100.png",
             "traversed": "game/graphics/logistics/customer100.png"
             },
@@ -61,7 +61,7 @@ configuration = {
             {"cost": 1, "unload": True, "objects": 0},
         },
     "customer1": {
-        "graphics":{ 
+        "graphics":{
             "default": "game/graphics/logistics/customer100_1.png",
             "traversed": "game/graphics/logistics/customer100_1.png"
             },
@@ -74,7 +74,7 @@ configuration = {
             {"cost": 1, "unload": True, "objects": 1},
         },
     "customer2": {
-        "graphics":{ 
+        "graphics":{
             "default": "game/graphics/logistics/customer100_2.png",
             "traversed": "game/graphics/logistics/customer100_2.png"
             },
@@ -87,7 +87,7 @@ configuration = {
             {"cost": 1, "unload": True, "objects": 2},
         },
     "customer3": {
-        "graphics":{ 
+        "graphics":{
             "default": "game/graphics/logistics/customer100_3.png",
             "traversed": "game/graphics/logistics/customer100_3.png"
             },
@@ -100,7 +100,7 @@ configuration = {
             {"cost": 1, "unload": True, "objects": 3},
         },
     "start": {
-        "graphics":{ 
+        "graphics":{
             "default": "game/graphics/logistics/base101.png",
             "traversed": "game/graphics/logistics/base101.png"
             },
@@ -113,9 +113,9 @@ configuration = {
             {"cost": 1},
         },
     "building": {
-        "graphics":{ 
+        "graphics":{
             "default": "game/graphics/logistics/building102.jpg",
-            "traversed": "game/graphics/logistics/building102.jpg" 
+            "traversed": "game/graphics/logistics/building102.jpg"
             },
         "id":  "building",
         "marker": 'X',
@@ -125,5 +125,5 @@ configuration = {
         "attributes":
             {"cost": 1, "blocked": True},
         }
-    }   
+    }
 }
