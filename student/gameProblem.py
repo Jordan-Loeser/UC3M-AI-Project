@@ -51,7 +51,7 @@ class GameProblem(SearchProblem):
             acciones.append('South')
         if(state[1] < self.MAXBAGS and (x,y) in self.SHOPS):
             acciones.append('Load')
-        if(state[1] > 0 and (x,y) in self.CUSTOMERS):
+        if(state[1] > 0 and state[2] > 0 and (x,y) in self.CUSTOMERS):
             acciones.append('Drop')
         return acciones
 
@@ -59,8 +59,6 @@ class GameProblem(SearchProblem):
     def result(self, state, action):
         '''Returns the state reached from this state when the given action is executed
         '''
-        print('result(state=', state, ', action=', action, ')\n')
-
         # Implement State Changes
         x = state[0][0]
         y = state[0][1]
@@ -82,6 +80,8 @@ class GameProblem(SearchProblem):
         elif(action == 'Drop'):
             next_load -= 1
             next_customers -= 1
+
+        print('result(state=', state, ', action=', action, ') => ', (next_pos, next_load, next_customers), '\n')
 
         return (next_pos, next_load, next_customers)
 
