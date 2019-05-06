@@ -84,27 +84,20 @@ class GameProblem(SearchProblem):
             next_load -= 1
             # Update the number of pizzas needed at the customer
             next_customers = []
-            print('@', state[0], 'DROP IT LIKE ITS: ', state[2])
-            if (len(state[2]) > 0):
-                for c in state[2]:
-                    print(c[0] == x and c[1] == y, c[2] > 1)
-                    if(c[0] == x and c[1] == y):
-                        if(c[2] > 1):
-                            print('c~', c)
-                            print('1~', next_customers)
-                            next_customers.append((c[0], c[1], c[2]-1))
-                            print('2~', next_customers)
-                        else:
-                            print('delivered all pizzas')
-                    else:
-                        next_customers.append((c[0], c[1], c[2]))
-                        print('added', c, 'as normal')
-            # Decrease Pizzas remaining for current customer
+            for c in state[2]:
+                # If the customer is in the same square as the delivery driver
+                if(c[0] == x and c[1] == y):
+                    # If all pizzas have been delivered, remove customer from list
+                    if(c[2] > 1):
+                        # Decrease Pizzas remaining for current customer
+                        next_customers.append((c[0], c[1], c[2]-1))
+                else:
+                    # Customer did not change
+                    next_customers.append((c[0], c[1], c[2]))
+            # Convert back to Tuple
             next_customers = tuple(next_customers)
-            print('!!! DONE', next_customers, '\n')
 
-        #print('result(state=', state, ', action=', action, ') => ', (next_pos, next_load, next_customers), '\n')
-
+        print('result(state=', state, ', action=', action, ') => ', (next_pos, next_load, next_customers), '\n')
         return (next_pos, next_load, next_customers)
 
 
