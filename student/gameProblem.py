@@ -22,14 +22,14 @@ class GameProblem(SearchProblem):
     CUSTOMERS=None
     MAXBAGS = 0
 
-    MOVES = ('West','North','East','South','Load','Drop')
+    MOVES = ('West','North','East','South')
 
    # --------------- Common functions to a SearchProblem -----------------
 
     def actions(self, state):
         '''Returns a LIST of the actions that may be executed in this state
         '''
-        print('actions(state=', state, ')\n')
+        #print('actions(state=', state, ')\n')
         acciones = [] # 'West','North','East','South','Load','Drop'
 
         # Determine which actions are valid
@@ -51,8 +51,11 @@ class GameProblem(SearchProblem):
             acciones.append('South')
         if(state[1] < self.MAXBAGS and (x,y) in self.SHOPS):
             acciones.append('Load')
-        if(state[1] > 0 and state[2] > 0 and (x,y) in self.CUSTOMERS):
+
+        ## Check if the current space is a customer
+        if (state[1] > 0 and (x,y) in [(c[0], c[1]) for c in self.CUSTOMERS]):
             acciones.append('Drop')
+
         return acciones
 
 
@@ -79,9 +82,28 @@ class GameProblem(SearchProblem):
             next_load += 1
         elif(action == 'Drop'):
             next_load -= 1
-            next_customers -= 1
+            # Update the number of pizzas needed at the customer
+            next_customers = []
+            print('@', state[0], 'DROP IT LIKE ITS: ', state[2])
+            if (len(state[2]) > 0):
+                for c in state[2]:
+                    print(c[0] == x and c[1] == y, c[2] > 1)
+                    if(c[0] == x and c[1] == y):
+                        if(c[2] > 1):
+                            print('c~', c)
+                            print('1~', next_customers)
+                            next_customers.append((c[0], c[1], c[2]-1))
+                            print('2~', next_customers)
+                        else:
+                            print('delivered all pizzas')
+                    else:
+                        next_customers.append((c[0], c[1], c[2]))
+                        print('added', c, 'as normal')
+            # Decrease Pizzas remaining for current customer
+            next_customers = tuple(next_customers)
+            print('!!! DONE', next_customers, '\n')
 
-        print('result(state=', state, ', action=', action, ') => ', (next_pos, next_load, next_customers), '\n')
+        #print('result(state=', state, ', action=', action, ') => ', (next_pos, next_load, next_customers), '\n')
 
         return (next_pos, next_load, next_customers)
 
@@ -89,7 +111,7 @@ class GameProblem(SearchProblem):
     def is_goal(self, state):
         '''Returns true if state is the final state
         '''
-        print('is_goal(state=', state, ')\n')
+        #print('is_goal(state=', state, ')\n')
 
         # See how many deliveries are necessary
         if state == self.GOAL: return True
@@ -128,25 +150,26 @@ class GameProblem(SearchProblem):
         #algorithm= simpleai.search.depth_first
         #algorithm= simpleai.search.limited_depth_first
 
-        self.MAXBAGS = 2
+        self.MAXBAGS = self.CONFIG['maxBags']
         self.SHOPS = self.POSITIONS['pizza']
         print('SHOPS: ', self.SHOPS, '\n')
 
         # Initialize Customers
-        # TODO: Keep track of how many pizzas a customer needs
-        self.CUSTOMERS = []
+        # NOTE: Each customer is a tuple represented as
+        #      (x, y, numPizzasOrdered)
+        self.CUSTOMERS = ()
         if 'customer0' in self.POSITIONS.keys():
-            self.CUSTOMERS += self.POSITIONS['customer0']
+            self.CUSTOMERS += tuple([c + (0,) for c in self.POSITIONS['customer0']])
         if 'customer1' in self.POSITIONS.keys():
-            self.CUSTOMERS += self.POSITIONS['customer1']
+            self.CUSTOMERS += tuple([c + (1,) for c in self.POSITIONS['customer1']])
         if 'customer2' in self.POSITIONS.keys():
-            self.CUSTOMERS += self.POSITIONS['customer2']
+            self.CUSTOMERS += tuple([c + (2,) for c in self.POSITIONS['customer2']])
         if 'customer3' in self.POSITIONS.keys():
-            self.CUSTOMERS += self.POSITIONS['customer3']
+            self.CUSTOMERS += tuple([c + (3,) for c in self.POSITIONS['customer3']])
         print('CUSTOMERS: ', self.CUSTOMERS, '\n')
 
-        initial_state = (self.AGENT_START, 0, len(self.CUSTOMERS)) # Note: will break if list is included
-        final_state= ((0,0),0,0)
+        initial_state = (self.AGENT_START, 0, self.CUSTOMERS) # Note: will break if immutable is included
+        final_state= ((0,0),0,())
 
         return initial_state,final_state,algorithm
 
@@ -161,6 +184,8 @@ class GameProblem(SearchProblem):
             This information is used to show the proper customer image.
         '''
         print('getPendingRequests(state=', state, ')\n')
+        if(state[0] in self.CUSTOMERS):
+            return self.getAttribute(state[0], 'objects')
 
         return -1 #None TODO: Python2.7
 
