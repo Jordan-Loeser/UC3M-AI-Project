@@ -177,8 +177,17 @@ class GameProblem(SearchProblem):
             This information is used to show the proper customer image.
         '''
         print('getPendingRequests(state=', state, ')\n')
-        if(state[0] in self.CUSTOMERS):
-            return self.getAttribute(state[0], 'objects')
+
+        for oc in self.CUSTOMERS:
+            # Check if current space is a customer
+            if((oc[0],oc[1]) == state[0]):
+                # Check if any pizzas are remaining
+                for c in state[2]:
+                    # If customer is in the space list, pizzas are remaining
+                    if((oc[0],oc[1]) == (c[0],c[1])):
+                        return c[2]
+                # If it is not in the list, none are remaining
+                return 0
 
         return -1 #None TODO: Python2.7
 
