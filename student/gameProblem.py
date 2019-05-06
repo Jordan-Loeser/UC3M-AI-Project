@@ -35,10 +35,9 @@ class GameProblem(SearchProblem):
         # Determine which actions are valid
         x = state[0][0]
         y = state[0][1]
-        maxX = self.CONFIG['map_size'][0]
-        maxY = self.CONFIG['map_size'][1]
+        maxX = self.CONFIG['map_size'][0] - 1
+        maxY = self.CONFIG['map_size'][1] - 1
 
-        buildings = self.POSITIONS['building']
         buildings = self.POSITIONS['building']
 
         if(x > 0 and (x-1, y) not in buildings): # | x

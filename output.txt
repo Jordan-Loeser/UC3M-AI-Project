@@ -1,120 +1,607 @@
 pygame 1.9.5
 Hello from the pygame community. https://www.pygame.org/contribute.html
 
-MAP:  [[['start', 1, {'cost': 1}, {'agent': 'agent', 'image': 'default'}], ['street', 8, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 16, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 25, {'cost': 1}, {'agent': None, 'image': 'default'}]], [['street', 1, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 9, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 17, {'cost': 1}, {'agent': None, 'image': 'default'}], ['building', 5, {'cost': 1, 'blocked': True}, {'agent': None, 'image': 'default'}]], [['building', 1, {'cost': 1, 'blocked': True}, {'agent': None, 'image': 'default'}], ['street', 10, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 18, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 26, {'cost': 1}, {'agent': None, 'image': 'default'}]], [['street', 2, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 11, {'cost': 1}, {'agent': None, 'image': 'default'}], ['building', 4, {'cost': 1, 'blocked': True}, {'agent': None, 'image': 'default'}], ['customer1', 1, {'cost': 1, 'unload': True, 'objects': 1}, {'agent': None, 'image': 'default'}]], [['street', 3, {'cost': 1}, {'agent': None, 'image': 'default'}], ['building', 2, {'cost': 1, 'blocked': True}, {'agent': None, 'image': 'default'}], ['street', 19, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 27, {'cost': 1}, {'agent': None, 'image': 'default'}]], [['street', 4, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 12, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 20, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 28, {'cost': 1}, {'agent': None, 'image': 'default'}]], [['pizza', 1, {'cost': 1}, {'agent': None, 'image': 'default'}], ['building', 3, {'cost': 1, 'blocked': True}, {'agent': None, 'image': 'default'}], ['street', 21, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 29, {'cost': 1}, {'agent': None, 'image': 'default'}]], [['street', 5, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 13, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 22, {'cost': 1}, {'agent': None, 'image': 'default'}], ['customer2', 1, {'cost': 1, 'unload': True, 'objects': 2}, {'agent': None, 'image': 'default'}]], [['street', 6, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 14, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 23, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 30, {'cost': 1}, {'agent': None, 'image': 'default'}]], [['street', 7, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 15, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 24, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 31, {'cost': 1}, {'agent': None, 'image': 'default'}]]] 
+MAP:  [[['start', 1, {'cost': 1}, {'agent': 'agent', 'image': 'default'}], ['street', 8, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 15, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 23, {'cost': 1}, {'agent': None, 'image': 'default'}]], [['street', 1, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 9, {'cost': 1}, {'agent': None, 'image': 'default'}], ['building', 5, {'cost': 1, 'blocked': True}, {'agent': None, 'image': 'default'}], ['customer1', 1, {'cost': 1, 'unload': True, 'objects': 1}, {'agent': None, 'image': 'default'}]], [['street', 2, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 10, {'cost': 1}, {'agent': None, 'image': 'default'}], ['building', 6, {'cost': 1, 'blocked': True}, {'agent': None, 'image': 'default'}], ['building', 7, {'cost': 1, 'blocked': True}, {'agent': None, 'image': 'default'}]], [['street', 3, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 11, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 16, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 24, {'cost': 1}, {'agent': None, 'image': 'default'}]], [['street', 4, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 12, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 17, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 25, {'cost': 1}, {'agent': None, 'image': 'default'}]], [['building', 1, {'cost': 1, 'blocked': True}, {'agent': None, 'image': 'default'}], ['building', 2, {'cost': 1, 'blocked': True}, {'agent': None, 'image': 'default'}], ['street', 18, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 26, {'cost': 1}, {'agent': None, 'image': 'default'}]], [['pizza', 1, {'cost': 1}, {'agent': None, 'image': 'default'}], ['building', 3, {'cost': 1, 'blocked': True}, {'agent': None, 'image': 'default'}], ['street', 19, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 27, {'cost': 1}, {'agent': None, 'image': 'default'}]], [['street', 5, {'cost': 1}, {'agent': None, 'image': 'default'}], ['building', 4, {'cost': 1, 'blocked': True}, {'agent': None, 'image': 'default'}], ['street', 20, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 28, {'cost': 1}, {'agent': None, 'image': 'default'}]], [['street', 6, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 13, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 21, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 29, {'cost': 1}, {'agent': None, 'image': 'default'}]], [['street', 7, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 14, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 22, {'cost': 1}, {'agent': None, 'image': 'default'}], ['street', 30, {'cost': 1}, {'agent': None, 'image': 'default'}]]] 
 
-POSITIONS:  {'customer2': [(7, 3)], 'pizza': [(6, 0)], 'building': [(1, 3), (2, 0), (3, 2), (4, 1), (6, 1)], 'street': [(0, 1), (0, 2), (0, 3), (1, 0), (1, 1), (1, 2), (2, 1), (2, 2), (2, 3), (3, 0), (3, 1), (4, 0), (4, 2), (4, 3), (5, 0), (5, 1), (5, 2), (5, 3), (6, 2), (6, 3), (7, 0), (7, 1), (7, 2), (8, 0), (8, 1), (8, 2), (8, 3), (9, 0), (9, 1), (9, 2), (9, 3)], 'start': [(0, 0)], 'customer1': [(3, 3)], 'agent': [(0, 0)]} 
+POSITIONS:  {'customer1': [(1, 3)], 'building': [(1, 2), (2, 2), (2, 3), (5, 0), (5, 1), (6, 1), (7, 1)], 'start': [(0, 0)], 'pizza': [(6, 0)], 'street': [(0, 1), (0, 2), (0, 3), (1, 0), (1, 1), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2), (3, 3), (4, 0), (4, 1), (4, 2), (4, 3), (5, 2), (5, 3), (6, 2), (6, 3), (7, 0), (7, 2), (7, 3), (8, 0), (8, 1), (8, 2), (8, 3), (9, 0), (9, 1), (9, 2), (9, 3)], 'agent': [(0, 0)]} 
 
-CONFIG:  {'text_size': 300, 'tile_size': 80, 'type': 'load', 'seed': None, 'file': './student/map1_basic.txt', 'map_size': [10, 4], 'delay': 0.1, 'debugMap': False, 'debug': False, 'save': False, 'hazards': False, 'basicTile': 'street', 'maxBags': 2, 'agent': {'graphics': {'default': 'game/graphics/logistics/deliver103.jpg'}, 'id': 'agent', 'marker': 'A', 'start': [0, 0]}, 'maptiles': {'street': {'graphics': {'default': 'game/graphics/logistics/street101.jpg', 'traversed': 'game/graphics/logistics/street101Traversed.jpg'}, 'id': 'street', 'marker': 'T', 'num': 31, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1}}, 'pizza': {'graphics': {'default': 'game/graphics/logistics/pizza101.jpg', 'traversed': 'game/graphics/logistics/pizza101.jpg'}, 'id': 'pizza', 'marker': 'Z', 'num': 1, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1}}, 'customer0': {'graphics': {'default': 'game/graphics/logistics/customer100.png', 'traversed': 'game/graphics/logistics/customer100.png'}, 'id': 'customer0', 'marker': '0', 'num': 0, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1, 'unload': True, 'objects': 0}}, 'customer1': {'graphics': {'default': 'game/graphics/logistics/customer100_1.png', 'traversed': 'game/graphics/logistics/customer100_1.png'}, 'id': 'customer1', 'marker': '1', 'num': 1, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1, 'unload': True, 'objects': 1}}, 'customer2': {'graphics': {'default': 'game/graphics/logistics/customer100_2.png', 'traversed': 'game/graphics/logistics/customer100_2.png'}, 'id': 'customer2', 'marker': '2', 'num': 1, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1, 'unload': True, 'objects': 2}}, 'customer3': {'graphics': {'default': 'game/graphics/logistics/customer100_3.png', 'traversed': 'game/graphics/logistics/customer100_3.png'}, 'id': 'customer3', 'marker': '3', 'num': 0, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1, 'unload': True, 'objects': 3}}, 'start': {'graphics': {'default': 'game/graphics/logistics/base101.png', 'traversed': 'game/graphics/logistics/base101.png'}, 'id': 'start', 'marker': 'W', 'num': 1, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1}}, 'building': {'graphics': {'default': 'game/graphics/logistics/building102.jpg', 'traversed': 'game/graphics/logistics/building102.jpg'}, 'id': 'building', 'marker': 'X', 'num': 5, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1, 'blocked': True}}}} 
+CONFIG:  {'text_size': 300, 'tile_size': 80, 'type': 'load', 'seed': None, 'file': './student/map2_basic.txt', 'map_size': [10, 4], 'delay': 0.1, 'debugMap': False, 'debug': False, 'save': False, 'hazards': False, 'basicTile': 'street', 'maxBags': 2, 'agent': {'graphics': {'default': 'game/graphics/logistics/deliver103.jpg'}, 'id': 'agent', 'marker': 'A', 'start': [0, 0]}, 'maptiles': {'street': {'graphics': {'default': 'game/graphics/logistics/street101.jpg', 'traversed': 'game/graphics/logistics/street101Traversed.jpg'}, 'id': 'street', 'marker': 'T', 'num': 30, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1}}, 'pizza': {'graphics': {'default': 'game/graphics/logistics/pizza101.jpg', 'traversed': 'game/graphics/logistics/pizza101.jpg'}, 'id': 'pizza', 'marker': 'Z', 'num': 1, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1}}, 'customer0': {'graphics': {'default': 'game/graphics/logistics/customer100.png', 'traversed': 'game/graphics/logistics/customer100.png'}, 'id': 'customer0', 'marker': '0', 'num': 0, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1, 'unload': True, 'objects': 0}}, 'customer1': {'graphics': {'default': 'game/graphics/logistics/customer100_1.png', 'traversed': 'game/graphics/logistics/customer100_1.png'}, 'id': 'customer1', 'marker': '1', 'num': 1, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1, 'unload': True, 'objects': 1}}, 'customer2': {'graphics': {'default': 'game/graphics/logistics/customer100_2.png', 'traversed': 'game/graphics/logistics/customer100_2.png'}, 'id': 'customer2', 'marker': '2', 'num': 0, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1, 'unload': True, 'objects': 2}}, 'customer3': {'graphics': {'default': 'game/graphics/logistics/customer100_3.png', 'traversed': 'game/graphics/logistics/customer100_3.png'}, 'id': 'customer3', 'marker': '3', 'num': 0, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1, 'unload': True, 'objects': 3}}, 'start': {'graphics': {'default': 'game/graphics/logistics/base101.png', 'traversed': 'game/graphics/logistics/base101.png'}, 'id': 'start', 'marker': 'W', 'num': 1, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1}}, 'building': {'graphics': {'default': 'game/graphics/logistics/building102.jpg', 'traversed': 'game/graphics/logistics/building102.jpg'}, 'id': 'building', 'marker': 'X', 'num': 7, 'state': {'agent': None, 'image': 'default'}, 'attributes': {'cost': 1, 'blocked': True}}}} 
 
 SHOPS:  [(6, 0)] 
 
-CUSTOMERS:  ((3, 3, 1), (7, 3, 2)) 
+CUSTOMERS:  ((1, 3, 1),) 
 
 -- INITIALIZATION OK
 ----------------------- PROBLEM INFORMATION ------------------
 -- Initial State  --
-((0, 0), 0, ((3, 3, 1), (7, 3, 2)))
+((0, 0), 0, ((1, 3, 1),))
 -- Final State  --
 ((0, 0), 0, ())
 -- Search Algorithm --
-<function astar at 0x103385730>
+<function astar at 0x10c96c730>
 -------------   EXECUTING SEARCH   -------------------
-@ (7, 3) DROP IT LIKE ITS:  ((3, 3, 1), (7, 3, 2))
-False False
-added (3, 3, 1) as normal
-True True
-c~ (7, 3, 2)
-1~ [(3, 3, 1)]
-2~ [(3, 3, 1), (7, 3, 1)]
-!!! DONE ((3, 3, 1), (7, 3, 1)) 
+result(state= ((0, 0), 0, ((1, 3, 1),)) , action= East ) =>  ((1, 0), 0, ((1, 3, 1),)) 
 
-@ (7, 3) DROP IT LIKE ITS:  ((3, 3, 1), (7, 3, 2))
-False False
-added (3, 3, 1) as normal
-True True
-c~ (7, 3, 2)
-1~ [(3, 3, 1)]
-2~ [(3, 3, 1), (7, 3, 1)]
-!!! DONE ((3, 3, 1), (7, 3, 1)) 
+result(state= ((0, 0), 0, ((1, 3, 1),)) , action= South ) =>  ((0, 1), 0, ((1, 3, 1),)) 
 
-@ (3, 3) DROP IT LIKE ITS:  ((3, 3, 1), (7, 3, 2))
-True False
-delivered all pizzas
-False True
-added (7, 3, 2) as normal
-!!! DONE ((7, 3, 2),) 
+result(state= ((1, 0), 0, ((1, 3, 1),)) , action= West ) =>  ((0, 0), 0, ((1, 3, 1),)) 
 
-@ (7, 3) DROP IT LIKE ITS:  ((3, 3, 1), (7, 3, 1))
-False False
-added (3, 3, 1) as normal
-True False
-delivered all pizzas
-!!! DONE ((3, 3, 1),) 
+result(state= ((1, 0), 0, ((1, 3, 1),)) , action= East ) =>  ((2, 0), 0, ((1, 3, 1),)) 
 
-@ (3, 3) DROP IT LIKE ITS:  ((3, 3, 1), (7, 3, 2))
-True False
-delivered all pizzas
-False True
-added (7, 3, 2) as normal
-!!! DONE ((7, 3, 2),) 
+result(state= ((1, 0), 0, ((1, 3, 1),)) , action= South ) =>  ((1, 1), 0, ((1, 3, 1),)) 
 
-@ (3, 3) DROP IT LIKE ITS:  ((7, 3, 2),)
-False True
-added (7, 3, 2) as normal
-!!! DONE ((7, 3, 2),) 
+result(state= ((0, 1), 0, ((1, 3, 1),)) , action= North ) =>  ((0, 0), 0, ((1, 3, 1),)) 
 
-@ (3, 3) DROP IT LIKE ITS:  ((3, 3, 1), (7, 3, 1))
-True False
-delivered all pizzas
-False False
-added (7, 3, 1) as normal
-!!! DONE ((7, 3, 1),) 
+result(state= ((0, 1), 0, ((1, 3, 1),)) , action= East ) =>  ((1, 1), 0, ((1, 3, 1),)) 
 
-@ (7, 3) DROP IT LIKE ITS:  ((7, 3, 2),)
-True True
-c~ (7, 3, 2)
-1~ []
-2~ [(7, 3, 1)]
-!!! DONE ((7, 3, 1),) 
+result(state= ((0, 1), 0, ((1, 3, 1),)) , action= South ) =>  ((0, 2), 0, ((1, 3, 1),)) 
 
-@ (7, 3) DROP IT LIKE ITS:  ((3, 3, 1), (7, 3, 1))
-False False
-added (3, 3, 1) as normal
-True False
-delivered all pizzas
-!!! DONE ((3, 3, 1),) 
+result(state= ((2, 0), 0, ((1, 3, 1),)) , action= West ) =>  ((1, 0), 0, ((1, 3, 1),)) 
 
-@ (7, 3) DROP IT LIKE ITS:  ((3, 3, 1),)
-False False
-added (3, 3, 1) as normal
-!!! DONE ((3, 3, 1),) 
+result(state= ((2, 0), 0, ((1, 3, 1),)) , action= East ) =>  ((3, 0), 0, ((1, 3, 1),)) 
 
-@ (7, 3) DROP IT LIKE ITS:  ((3, 3, 1),)
-False False
-added (3, 3, 1) as normal
-!!! DONE ((3, 3, 1),) 
+result(state= ((2, 0), 0, ((1, 3, 1),)) , action= South ) =>  ((2, 1), 0, ((1, 3, 1),)) 
 
-@ (3, 3) DROP IT LIKE ITS:  ((3, 3, 1), (7, 3, 1))
-True False
-delivered all pizzas
-False False
-added (7, 3, 1) as normal
-!!! DONE ((7, 3, 1),) 
+result(state= ((1, 1), 0, ((1, 3, 1),)) , action= West ) =>  ((0, 1), 0, ((1, 3, 1),)) 
 
-@ (3, 3) DROP IT LIKE ITS:  ((7, 3, 1),)
-False False
-added (7, 3, 1) as normal
-!!! DONE ((7, 3, 1),) 
+result(state= ((1, 1), 0, ((1, 3, 1),)) , action= North ) =>  ((1, 0), 0, ((1, 3, 1),)) 
 
-@ (3, 3) DROP IT LIKE ITS:  ((3, 3, 1),)
-True False
-delivered all pizzas
-!!! DONE () 
+result(state= ((1, 1), 0, ((1, 3, 1),)) , action= East ) =>  ((2, 1), 0, ((1, 3, 1),)) 
 
-@ (3, 3) DROP IT LIKE ITS:  ((3, 3, 1),)
-True False
-delivered all pizzas
-!!! DONE () 
+result(state= ((0, 2), 0, ((1, 3, 1),)) , action= North ) =>  ((0, 1), 0, ((1, 3, 1),)) 
 
-@ (7, 3) DROP IT LIKE ITS: 
+result(state= ((0, 2), 0, ((1, 3, 1),)) , action= South ) =>  ((0, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((2, 1), 0, ((1, 3, 1),)) , action= West ) =>  ((1, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((2, 1), 0, ((1, 3, 1),)) , action= North ) =>  ((2, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((2, 1), 0, ((1, 3, 1),)) , action= East ) =>  ((3, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((3, 0), 0, ((1, 3, 1),)) , action= West ) =>  ((2, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((3, 0), 0, ((1, 3, 1),)) , action= East ) =>  ((4, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((3, 0), 0, ((1, 3, 1),)) , action= South ) =>  ((3, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((0, 3), 0, ((1, 3, 1),)) , action= North ) =>  ((0, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((0, 3), 0, ((1, 3, 1),)) , action= East ) =>  ((1, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((3, 1), 0, ((1, 3, 1),)) , action= West ) =>  ((2, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((3, 1), 0, ((1, 3, 1),)) , action= North ) =>  ((3, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((3, 1), 0, ((1, 3, 1),)) , action= East ) =>  ((4, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((3, 1), 0, ((1, 3, 1),)) , action= South ) =>  ((3, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((4, 0), 0, ((1, 3, 1),)) , action= West ) =>  ((3, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((4, 0), 0, ((1, 3, 1),)) , action= South ) =>  ((4, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((1, 3), 0, ((1, 3, 1),)) , action= West ) =>  ((0, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((3, 2), 0, ((1, 3, 1),)) , action= North ) =>  ((3, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((3, 2), 0, ((1, 3, 1),)) , action= East ) =>  ((4, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((3, 2), 0, ((1, 3, 1),)) , action= South ) =>  ((3, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((4, 1), 0, ((1, 3, 1),)) , action= West ) =>  ((3, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((4, 1), 0, ((1, 3, 1),)) , action= North ) =>  ((4, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((4, 1), 0, ((1, 3, 1),)) , action= South ) =>  ((4, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((4, 2), 0, ((1, 3, 1),)) , action= West ) =>  ((3, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((4, 2), 0, ((1, 3, 1),)) , action= North ) =>  ((4, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((4, 2), 0, ((1, 3, 1),)) , action= East ) =>  ((5, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((4, 2), 0, ((1, 3, 1),)) , action= South ) =>  ((4, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((3, 3), 0, ((1, 3, 1),)) , action= North ) =>  ((3, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((3, 3), 0, ((1, 3, 1),)) , action= East ) =>  ((4, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((5, 2), 0, ((1, 3, 1),)) , action= West ) =>  ((4, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((5, 2), 0, ((1, 3, 1),)) , action= East ) =>  ((6, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((5, 2), 0, ((1, 3, 1),)) , action= South ) =>  ((5, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((4, 3), 0, ((1, 3, 1),)) , action= West ) =>  ((3, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((4, 3), 0, ((1, 3, 1),)) , action= North ) =>  ((4, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((4, 3), 0, ((1, 3, 1),)) , action= East ) =>  ((5, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((6, 2), 0, ((1, 3, 1),)) , action= West ) =>  ((5, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((6, 2), 0, ((1, 3, 1),)) , action= East ) =>  ((7, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((6, 2), 0, ((1, 3, 1),)) , action= South ) =>  ((6, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((5, 3), 0, ((1, 3, 1),)) , action= West ) =>  ((4, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((5, 3), 0, ((1, 3, 1),)) , action= North ) =>  ((5, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((5, 3), 0, ((1, 3, 1),)) , action= East ) =>  ((6, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((7, 2), 0, ((1, 3, 1),)) , action= West ) =>  ((6, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((7, 2), 0, ((1, 3, 1),)) , action= East ) =>  ((8, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((7, 2), 0, ((1, 3, 1),)) , action= South ) =>  ((7, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((6, 3), 0, ((1, 3, 1),)) , action= West ) =>  ((5, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((6, 3), 0, ((1, 3, 1),)) , action= North ) =>  ((6, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((6, 3), 0, ((1, 3, 1),)) , action= East ) =>  ((7, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((8, 2), 0, ((1, 3, 1),)) , action= West ) =>  ((7, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((8, 2), 0, ((1, 3, 1),)) , action= North ) =>  ((8, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((8, 2), 0, ((1, 3, 1),)) , action= East ) =>  ((9, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((8, 2), 0, ((1, 3, 1),)) , action= South ) =>  ((8, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((7, 3), 0, ((1, 3, 1),)) , action= West ) =>  ((6, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((7, 3), 0, ((1, 3, 1),)) , action= North ) =>  ((7, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((7, 3), 0, ((1, 3, 1),)) , action= East ) =>  ((8, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((9, 2), 0, ((1, 3, 1),)) , action= West ) =>  ((8, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((9, 2), 0, ((1, 3, 1),)) , action= North ) =>  ((9, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((9, 2), 0, ((1, 3, 1),)) , action= South ) =>  ((9, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((8, 1), 0, ((1, 3, 1),)) , action= North ) =>  ((8, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((8, 1), 0, ((1, 3, 1),)) , action= East ) =>  ((9, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((8, 1), 0, ((1, 3, 1),)) , action= South ) =>  ((8, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((8, 3), 0, ((1, 3, 1),)) , action= West ) =>  ((7, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((8, 3), 0, ((1, 3, 1),)) , action= North ) =>  ((8, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((8, 3), 0, ((1, 3, 1),)) , action= East ) =>  ((9, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((9, 1), 0, ((1, 3, 1),)) , action= West ) =>  ((8, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((9, 1), 0, ((1, 3, 1),)) , action= North ) =>  ((9, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((9, 1), 0, ((1, 3, 1),)) , action= South ) =>  ((9, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((9, 3), 0, ((1, 3, 1),)) , action= West ) =>  ((8, 3), 0, ((1, 3, 1),)) 
+
+result(state= ((9, 3), 0, ((1, 3, 1),)) , action= North ) =>  ((9, 2), 0, ((1, 3, 1),)) 
+
+result(state= ((8, 0), 0, ((1, 3, 1),)) , action= West ) =>  ((7, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((8, 0), 0, ((1, 3, 1),)) , action= East ) =>  ((9, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((8, 0), 0, ((1, 3, 1),)) , action= South ) =>  ((8, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((9, 0), 0, ((1, 3, 1),)) , action= West ) =>  ((8, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((9, 0), 0, ((1, 3, 1),)) , action= South ) =>  ((9, 1), 0, ((1, 3, 1),)) 
+
+result(state= ((7, 0), 0, ((1, 3, 1),)) , action= West ) =>  ((6, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((7, 0), 0, ((1, 3, 1),)) , action= East ) =>  ((8, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((6, 0), 0, ((1, 3, 1),)) , action= East ) =>  ((7, 0), 0, ((1, 3, 1),)) 
+
+result(state= ((6, 0), 0, ((1, 3, 1),)) , action= Load ) =>  ((6, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((6, 0), 1, ((1, 3, 1),)) , action= East ) =>  ((7, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((6, 0), 1, ((1, 3, 1),)) , action= Load ) =>  ((6, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((7, 0), 1, ((1, 3, 1),)) , action= West ) =>  ((6, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((7, 0), 1, ((1, 3, 1),)) , action= East ) =>  ((8, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((6, 0), 2, ((1, 3, 1),)) , action= East ) =>  ((7, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 0), 1, ((1, 3, 1),)) , action= West ) =>  ((7, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((8, 0), 1, ((1, 3, 1),)) , action= East ) =>  ((9, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((8, 0), 1, ((1, 3, 1),)) , action= South ) =>  ((8, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((7, 0), 2, ((1, 3, 1),)) , action= West ) =>  ((6, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((7, 0), 2, ((1, 3, 1),)) , action= East ) =>  ((8, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((9, 0), 1, ((1, 3, 1),)) , action= West ) =>  ((8, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((9, 0), 1, ((1, 3, 1),)) , action= South ) =>  ((9, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((8, 1), 1, ((1, 3, 1),)) , action= North ) =>  ((8, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((8, 1), 1, ((1, 3, 1),)) , action= East ) =>  ((9, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((8, 1), 1, ((1, 3, 1),)) , action= South ) =>  ((8, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((8, 0), 2, ((1, 3, 1),)) , action= West ) =>  ((7, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 0), 2, ((1, 3, 1),)) , action= East ) =>  ((9, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 0), 2, ((1, 3, 1),)) , action= South ) =>  ((8, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((9, 1), 1, ((1, 3, 1),)) , action= West ) =>  ((8, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((9, 1), 1, ((1, 3, 1),)) , action= North ) =>  ((9, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((9, 1), 1, ((1, 3, 1),)) , action= South ) =>  ((9, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((9, 0), 2, ((1, 3, 1),)) , action= West ) =>  ((8, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((9, 0), 2, ((1, 3, 1),)) , action= South ) =>  ((9, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 1), 2, ((1, 3, 1),)) , action= North ) =>  ((8, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 1), 2, ((1, 3, 1),)) , action= East ) =>  ((9, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 1), 2, ((1, 3, 1),)) , action= South ) =>  ((8, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 2), 1, ((1, 3, 1),)) , action= West ) =>  ((7, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((8, 2), 1, ((1, 3, 1),)) , action= North ) =>  ((8, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((8, 2), 1, ((1, 3, 1),)) , action= East ) =>  ((9, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((8, 2), 1, ((1, 3, 1),)) , action= South ) =>  ((8, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((9, 2), 1, ((1, 3, 1),)) , action= West ) =>  ((8, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((9, 2), 1, ((1, 3, 1),)) , action= North ) =>  ((9, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((9, 2), 1, ((1, 3, 1),)) , action= South ) =>  ((9, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((8, 2), 2, ((1, 3, 1),)) , action= West ) =>  ((7, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 2), 2, ((1, 3, 1),)) , action= North ) =>  ((8, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 2), 2, ((1, 3, 1),)) , action= East ) =>  ((9, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 2), 2, ((1, 3, 1),)) , action= South ) =>  ((8, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 3), 1, ((1, 3, 1),)) , action= West ) =>  ((7, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((8, 3), 1, ((1, 3, 1),)) , action= North ) =>  ((8, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((8, 3), 1, ((1, 3, 1),)) , action= East ) =>  ((9, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((9, 1), 2, ((1, 3, 1),)) , action= West ) =>  ((8, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((9, 1), 2, ((1, 3, 1),)) , action= North ) =>  ((9, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((9, 1), 2, ((1, 3, 1),)) , action= South ) =>  ((9, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((7, 2), 1, ((1, 3, 1),)) , action= West ) =>  ((6, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((7, 2), 1, ((1, 3, 1),)) , action= East ) =>  ((8, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((7, 2), 1, ((1, 3, 1),)) , action= South ) =>  ((7, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((9, 3), 1, ((1, 3, 1),)) , action= West ) =>  ((8, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((9, 3), 1, ((1, 3, 1),)) , action= North ) =>  ((9, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((9, 2), 2, ((1, 3, 1),)) , action= West ) =>  ((8, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((9, 2), 2, ((1, 3, 1),)) , action= North ) =>  ((9, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((9, 2), 2, ((1, 3, 1),)) , action= South ) =>  ((9, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((6, 2), 1, ((1, 3, 1),)) , action= West ) =>  ((5, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((6, 2), 1, ((1, 3, 1),)) , action= East ) =>  ((7, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((6, 2), 1, ((1, 3, 1),)) , action= South ) =>  ((6, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((7, 3), 1, ((1, 3, 1),)) , action= West ) =>  ((6, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((7, 3), 1, ((1, 3, 1),)) , action= North ) =>  ((7, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((7, 3), 1, ((1, 3, 1),)) , action= East ) =>  ((8, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((7, 2), 2, ((1, 3, 1),)) , action= West ) =>  ((6, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((7, 2), 2, ((1, 3, 1),)) , action= East ) =>  ((8, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((7, 2), 2, ((1, 3, 1),)) , action= South ) =>  ((7, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 3), 2, ((1, 3, 1),)) , action= West ) =>  ((7, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 3), 2, ((1, 3, 1),)) , action= North ) =>  ((8, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((8, 3), 2, ((1, 3, 1),)) , action= East ) =>  ((9, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((9, 3), 2, ((1, 3, 1),)) , action= West ) =>  ((8, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((9, 3), 2, ((1, 3, 1),)) , action= North ) =>  ((9, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((7, 3), 2, ((1, 3, 1),)) , action= West ) =>  ((6, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((7, 3), 2, ((1, 3, 1),)) , action= North ) =>  ((7, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((7, 3), 2, ((1, 3, 1),)) , action= East ) =>  ((8, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((6, 2), 2, ((1, 3, 1),)) , action= West ) =>  ((5, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((6, 2), 2, ((1, 3, 1),)) , action= East ) =>  ((7, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((6, 2), 2, ((1, 3, 1),)) , action= South ) =>  ((6, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((5, 2), 1, ((1, 3, 1),)) , action= West ) =>  ((4, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((5, 2), 1, ((1, 3, 1),)) , action= East ) =>  ((6, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((5, 2), 1, ((1, 3, 1),)) , action= South ) =>  ((5, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((6, 3), 1, ((1, 3, 1),)) , action= West ) =>  ((5, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((6, 3), 1, ((1, 3, 1),)) , action= North ) =>  ((6, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((6, 3), 1, ((1, 3, 1),)) , action= East ) =>  ((7, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((6, 3), 2, ((1, 3, 1),)) , action= West ) =>  ((5, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((6, 3), 2, ((1, 3, 1),)) , action= North ) =>  ((6, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((6, 3), 2, ((1, 3, 1),)) , action= East ) =>  ((7, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((5, 3), 1, ((1, 3, 1),)) , action= West ) =>  ((4, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((5, 3), 1, ((1, 3, 1),)) , action= North ) =>  ((5, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((5, 3), 1, ((1, 3, 1),)) , action= East ) =>  ((6, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((4, 2), 1, ((1, 3, 1),)) , action= West ) =>  ((3, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((4, 2), 1, ((1, 3, 1),)) , action= North ) =>  ((4, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((4, 2), 1, ((1, 3, 1),)) , action= East ) =>  ((5, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((4, 2), 1, ((1, 3, 1),)) , action= South ) =>  ((4, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((5, 2), 2, ((1, 3, 1),)) , action= West ) =>  ((4, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((5, 2), 2, ((1, 3, 1),)) , action= East ) =>  ((6, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((5, 2), 2, ((1, 3, 1),)) , action= South ) =>  ((5, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((5, 3), 2, ((1, 3, 1),)) , action= West ) =>  ((4, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((5, 3), 2, ((1, 3, 1),)) , action= North ) =>  ((5, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((5, 3), 2, ((1, 3, 1),)) , action= East ) =>  ((6, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((4, 1), 1, ((1, 3, 1),)) , action= West ) =>  ((3, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((4, 1), 1, ((1, 3, 1),)) , action= North ) =>  ((4, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((4, 1), 1, ((1, 3, 1),)) , action= South ) =>  ((4, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((4, 2), 2, ((1, 3, 1),)) , action= West ) =>  ((3, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((4, 2), 2, ((1, 3, 1),)) , action= North ) =>  ((4, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((4, 2), 2, ((1, 3, 1),)) , action= East ) =>  ((5, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((4, 2), 2, ((1, 3, 1),)) , action= South ) =>  ((4, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((4, 3), 1, ((1, 3, 1),)) , action= West ) =>  ((3, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((4, 3), 1, ((1, 3, 1),)) , action= North ) =>  ((4, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((4, 3), 1, ((1, 3, 1),)) , action= East ) =>  ((5, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((3, 2), 1, ((1, 3, 1),)) , action= North ) =>  ((3, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((3, 2), 1, ((1, 3, 1),)) , action= East ) =>  ((4, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((3, 2), 1, ((1, 3, 1),)) , action= South ) =>  ((3, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((4, 3), 2, ((1, 3, 1),)) , action= West ) =>  ((3, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((4, 3), 2, ((1, 3, 1),)) , action= North ) =>  ((4, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((4, 3), 2, ((1, 3, 1),)) , action= East ) =>  ((5, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((3, 2), 2, ((1, 3, 1),)) , action= North ) =>  ((3, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((3, 2), 2, ((1, 3, 1),)) , action= East ) =>  ((4, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((3, 2), 2, ((1, 3, 1),)) , action= South ) =>  ((3, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((3, 3), 1, ((1, 3, 1),)) , action= North ) =>  ((3, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((3, 3), 1, ((1, 3, 1),)) , action= East ) =>  ((4, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((3, 1), 1, ((1, 3, 1),)) , action= West ) =>  ((2, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((3, 1), 1, ((1, 3, 1),)) , action= North ) =>  ((3, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((3, 1), 1, ((1, 3, 1),)) , action= East ) =>  ((4, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((3, 1), 1, ((1, 3, 1),)) , action= South ) =>  ((3, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((4, 1), 2, ((1, 3, 1),)) , action= West ) =>  ((3, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((4, 1), 2, ((1, 3, 1),)) , action= North ) =>  ((4, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((4, 1), 2, ((1, 3, 1),)) , action= South ) =>  ((4, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((4, 0), 1, ((1, 3, 1),)) , action= West ) =>  ((3, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((4, 0), 1, ((1, 3, 1),)) , action= South ) =>  ((4, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((3, 3), 2, ((1, 3, 1),)) , action= North ) =>  ((3, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((3, 3), 2, ((1, 3, 1),)) , action= East ) =>  ((4, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((4, 0), 2, ((1, 3, 1),)) , action= West ) =>  ((3, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((4, 0), 2, ((1, 3, 1),)) , action= South ) =>  ((4, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((3, 0), 1, ((1, 3, 1),)) , action= West ) =>  ((2, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((3, 0), 1, ((1, 3, 1),)) , action= East ) =>  ((4, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((3, 0), 1, ((1, 3, 1),)) , action= South ) =>  ((3, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((3, 1), 2, ((1, 3, 1),)) , action= West ) =>  ((2, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((3, 1), 2, ((1, 3, 1),)) , action= North ) =>  ((3, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((3, 1), 2, ((1, 3, 1),)) , action= East ) =>  ((4, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((3, 1), 2, ((1, 3, 1),)) , action= South ) =>  ((3, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((2, 1), 1, ((1, 3, 1),)) , action= West ) =>  ((1, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((2, 1), 1, ((1, 3, 1),)) , action= North ) =>  ((2, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((2, 1), 1, ((1, 3, 1),)) , action= East ) =>  ((3, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((3, 0), 2, ((1, 3, 1),)) , action= West ) =>  ((2, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((3, 0), 2, ((1, 3, 1),)) , action= East ) =>  ((4, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((3, 0), 2, ((1, 3, 1),)) , action= South ) =>  ((3, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((2, 1), 2, ((1, 3, 1),)) , action= West ) =>  ((1, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((2, 1), 2, ((1, 3, 1),)) , action= North ) =>  ((2, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((2, 1), 2, ((1, 3, 1),)) , action= East ) =>  ((3, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((1, 1), 1, ((1, 3, 1),)) , action= West ) =>  ((0, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((1, 1), 1, ((1, 3, 1),)) , action= North ) =>  ((1, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((1, 1), 1, ((1, 3, 1),)) , action= East ) =>  ((2, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((2, 0), 1, ((1, 3, 1),)) , action= West ) =>  ((1, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((2, 0), 1, ((1, 3, 1),)) , action= East ) =>  ((3, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((2, 0), 1, ((1, 3, 1),)) , action= South ) =>  ((2, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((2, 0), 2, ((1, 3, 1),)) , action= West ) =>  ((1, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((2, 0), 2, ((1, 3, 1),)) , action= East ) =>  ((3, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((2, 0), 2, ((1, 3, 1),)) , action= South ) =>  ((2, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((1, 0), 1, ((1, 3, 1),)) , action= West ) =>  ((0, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((1, 0), 1, ((1, 3, 1),)) , action= East ) =>  ((2, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((1, 0), 1, ((1, 3, 1),)) , action= South ) =>  ((1, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((0, 1), 1, ((1, 3, 1),)) , action= North ) =>  ((0, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((0, 1), 1, ((1, 3, 1),)) , action= East ) =>  ((1, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((0, 1), 1, ((1, 3, 1),)) , action= South ) =>  ((0, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((1, 1), 2, ((1, 3, 1),)) , action= West ) =>  ((0, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((1, 1), 2, ((1, 3, 1),)) , action= North ) =>  ((1, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((1, 1), 2, ((1, 3, 1),)) , action= East ) =>  ((2, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((1, 0), 2, ((1, 3, 1),)) , action= West ) =>  ((0, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((1, 0), 2, ((1, 3, 1),)) , action= East ) =>  ((2, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((1, 0), 2, ((1, 3, 1),)) , action= South ) =>  ((1, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((0, 2), 1, ((1, 3, 1),)) , action= North ) =>  ((0, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((0, 2), 1, ((1, 3, 1),)) , action= South ) =>  ((0, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((0, 1), 2, ((1, 3, 1),)) , action= North ) =>  ((0, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((0, 1), 2, ((1, 3, 1),)) , action= East ) =>  ((1, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((0, 1), 2, ((1, 3, 1),)) , action= South ) =>  ((0, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((0, 0), 1, ((1, 3, 1),)) , action= East ) =>  ((1, 0), 1, ((1, 3, 1),)) 
+
+result(state= ((0, 0), 1, ((1, 3, 1),)) , action= South ) =>  ((0, 1), 1, ((1, 3, 1),)) 
+
+result(state= ((0, 0), 2, ((1, 3, 1),)) , action= East ) =>  ((1, 0), 2, ((1, 3, 1),)) 
+
+result(state= ((0, 0), 2, ((1, 3, 1),)) , action= South ) =>  ((0, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((0, 3), 1, ((1, 3, 1),)) , action= North ) =>  ((0, 2), 1, ((1, 3, 1),)) 
+
+result(state= ((0, 3), 1, ((1, 3, 1),)) , action= East ) =>  ((1, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((0, 2), 2, ((1, 3, 1),)) , action= North ) =>  ((0, 1), 2, ((1, 3, 1),)) 
+
+result(state= ((0, 2), 2, ((1, 3, 1),)) , action= South ) =>  ((0, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((1, 3), 1, ((1, 3, 1),)) , action= West ) =>  ((0, 3), 1, ((1, 3, 1),)) 
+
+result(state= ((1, 3), 1, ((1, 3, 1),)) , action= Drop ) =>  ((1, 3), 0, ()) 
+
+result(state= ((0, 3), 2, ((1, 3, 1),)) , action= North ) =>  ((0, 2), 2, ((1, 3, 1),)) 
+
+result(state= ((0, 3), 2, ((1, 3, 1),)) , action= East ) =>  ((1, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((1, 3), 0, ()) , action= West ) =>  ((0, 3), 0, ()) 
+
+result(state= ((1, 3), 2, ((1, 3, 1),)) , action= West ) =>  ((0, 3), 2, ((1, 3, 1),)) 
+
+result(state= ((1, 3), 2, ((1, 3, 1),)) , action= Drop ) =>  ((1, 3), 1, ()) 
+
+result(state= ((0, 3), 0, ()) , action= North ) =>  ((0, 2), 0, ()) 
+
+result(state= ((0, 3), 0, ()) , action= East ) =>  ((1, 3), 0, ()) 
+
+result(state= ((1, 3), 1, ()) , action= West ) =>  ((0, 3), 1, ()) 
+
+result(state= ((1, 3), 1, ()) , action= Drop ) =>  ((1, 3), 0, ()) 
+
+result(state= ((0, 2), 0, ()) , action= North ) =>  ((0, 1), 0, ()) 
+
+result(state= ((0, 2), 0, ()) , action= South ) =>  ((0, 3), 0, ()) 
+
+result(state= ((0, 3), 1, ()) , action= North ) =>  ((0, 2), 1, ()) 
+
+result(state= ((0, 3), 1, ()) , action= East ) =>  ((1, 3), 1, ()) 
+
+result(state= ((0, 1), 0, ()) , action= North ) =>  ((0, 0), 0, ()) 
+
+result(state= ((0, 1), 0, ()) , action= East ) =>  ((1, 1), 0, ()) 
+
+result(state= ((0, 1), 0, ()) , action= South ) =>  ((0, 2), 0, ()) 
+
+result(state= ((0, 2), 1, ()) , action= North ) =>  ((0, 1), 1, ()) 
+
+result(state= ((0, 2), 1, ()) , action= South ) =>  ((0, 3), 1, ()) 
+
+-------------   SEARCH RESULTS   -------------------
+Reached final state: ((0, 0), 0, ())
+total length of solution: 36
+total cost of solution: 36
+max fringe size: 7
+visited nodes: 107
+iterations: 107
+
+Solution as path (length:37): [(None, ((0, 0), 0, ((1, 3, 1),))), ('East', ((1, 0), 0, ((1, 3, 1),))), ('East', ((2, 0), 0, ((1, 3, 1),))), ('South', ((2, 1), 0, ((1, 3, 1),))), ('East', ((3, 1), 0, ((1, 3, 1),))), ('South', ((3, 2), 0, ((1, 3, 1),))), ('East', ((4, 2), 0, ((1, 3, 1),))), ('East', ((5, 2), 0, ((1, 3, 1),))), ('East', ((6, 2), 0, ((1, 3, 1),))), ('East', ((7, 2), 0, ((1, 3, 1),))), ('East', ((8, 2), 0, ((1, 3, 1),))), ('North', ((8, 1), 0, ((1, 3, 1),))), ('North', ((8, 0), 0, ((1, 3, 1),))), ('West', ((7, 0), 0, ((1, 3, 1),))), ('West', ((6, 0), 0, ((1, 3, 1),))), ('Load', ((6, 0), 1, ((1, 3, 1),))), ('East', ((7, 0), 1, ((1, 3, 1),))), ('East', ((8, 0), 1, ((1, 3, 1),))), ('South', ((8, 1), 1, ((1, 3, 1),))), ('South', ((8, 2), 1, ((1, 3, 1),))), ('West', ((7, 2), 1, ((1, 3, 1),))), ('West', ((6, 2), 1, ((1, 3, 1),))), ('West', ((5, 2), 1, ((1, 3, 1),))), ('West', ((4, 2), 1, ((1, 3, 1),))), ('North', ((4, 1), 1, ((1, 3, 1),))), ('West', ((3, 1), 1, ((1, 3, 1),))), ('West', ((2, 1), 1, ((1, 3, 1),))), ('West', ((1, 1), 1, ((1, 3, 1),))), ('West', ((0, 1), 1, ((1, 3, 1),))), ('South', ((0, 2), 1, ((1, 3, 1),))), ('South', ((0, 3), 1, ((1, 3, 1),))), ('East', ((1, 3), 1, ((1, 3, 1),))), ('Drop', ((1, 3), 0, ())), ('West', ((0, 3), 0, ())), ('North', ((0, 2), 0, ())), ('North', ((0, 1), 0, ())), ('North', ((0, 0), 0, ()))]
