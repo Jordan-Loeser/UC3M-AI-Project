@@ -119,7 +119,6 @@ class GameProblem(SearchProblem):
 
         if action in self.MOVES:
             # Cost is based on movement
-            print('!!!', action, '~', self.getAttribute(state[0], "cost"))
             return self.getAttribute(state[0], "cost")
 
         # Otherwise Action is loading or dropping 1 pizza
