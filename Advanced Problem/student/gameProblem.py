@@ -96,7 +96,7 @@ class GameProblem(SearchProblem):
             # Convert back to Tuple
             next_customers = tuple(next_customers)
 
-        print('result(state=', state, ', action=', action, ') => ', (next_pos, next_load, next_customers), '\n')
+        #print('result(state=', state, ', action=', action, ') => ', (next_pos, next_load, next_customers), '\n')
         return (next_pos, next_load, next_customers)
 
 
@@ -116,6 +116,13 @@ class GameProblem(SearchProblem):
            By default this function returns `1`.
         '''
         #print('cost(state=', state, ', action=', action, ', state2=', state2, ')\n')
+
+        if action in self.MOVES:
+            # Cost is based on movement
+            print('!!!', action, '~', self.getAttribute(state[0], "cost"))
+            return self.getAttribute(state[0], "cost")
+
+        # Otherwise Action is loading or dropping 1 pizza
         return 1
 
     def heuristic(self, state):
@@ -137,8 +144,8 @@ class GameProblem(SearchProblem):
         print('POSITIONS: ', self.POSITIONS, '\n')
         print('CONFIG: ', self.CONFIG, '\n')
 
-        algorithm= simpleai.search.astar
-        #algorithm= simpleai.search.breadth_first
+        #algorithm= simpleai.search.astar
+        algorithm= simpleai.search.breadth_first
         #algorithm= simpleai.search.depth_first
         #algorithm= simpleai.search.limited_depth_first
 
@@ -175,7 +182,7 @@ class GameProblem(SearchProblem):
             MUST return None if the position is not a customer.
             This information is used to show the proper customer image.
         '''
-        print('getPendingRequests(state=', state, ')\n')
+        #print('getPendingRequests(state=', state, ')\n')
 
         for oc in self.CUSTOMERS:
             # Check if current space is a customer
