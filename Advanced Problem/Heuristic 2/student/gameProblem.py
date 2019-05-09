@@ -127,8 +127,9 @@ class GameProblem(SearchProblem):
     def heuristic(self, state):
         '''Returns the heuristic for `state`
         '''
-        #print('heuristic(state=', state, ')\n')
-        return 0
+        print('heuristic2(state=', state, ')\n')
+        customersRemaining = sum([1 for c in state[2]])
+        return customersRemaining
 
 
     def setup (self):
@@ -143,8 +144,8 @@ class GameProblem(SearchProblem):
         print('POSITIONS: ', self.POSITIONS, '\n')
         print('CONFIG: ', self.CONFIG, '\n')
 
-        #algorithm= simpleai.search.astar
-        algorithm= simpleai.search.breadth_first
+        algorithm= simpleai.search.astar
+        #algorithm= simpleai.search.breadth_first
         #algorithm= simpleai.search.depth_first
         #algorithm= simpleai.search.limited_depth_first
 
