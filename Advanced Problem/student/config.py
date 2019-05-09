@@ -1,9 +1,9 @@
 configuration = {
 "text_size": 300,
-"tile_size": 80,
+"tile_size": 70,
 "type": "load", #random
 "seed": None,
-"file": "./student/map.txt",
+"file": "./student/map_advanced.txt",
 "map_size": [10, 5],
 "delay": 0.1,
 "debugMap": False,

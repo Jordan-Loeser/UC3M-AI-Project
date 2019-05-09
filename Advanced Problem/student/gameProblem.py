@@ -167,7 +167,7 @@ class GameProblem(SearchProblem):
         print('CUSTOMERS: ', self.CUSTOMERS, '\n')
 
         initial_state = (self.AGENT_START, 0, self.CUSTOMERS) # Note: will break if immutable is included
-        final_state= ((0,0),0,())
+        final_state= (self.AGENT_START, 0, ())
 
         return initial_state,final_state,algorithm
 
