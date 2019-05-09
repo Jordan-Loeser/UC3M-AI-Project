@@ -127,8 +127,10 @@ class GameProblem(SearchProblem):
     def heuristic(self, state):
         '''Returns the heuristic for `state`
         '''
-        #print('heuristic(state=', state, ')\n')
-        return 0
+        print('heuristic3(state=', state, ')\n')
+        pizzasRemaining = sum([c[2] for c in state[2]])
+        heuristic = (pizzasRemaining - state[1]) / self.MAXBAGS
+        return heuristic
 
 
     def setup (self):
