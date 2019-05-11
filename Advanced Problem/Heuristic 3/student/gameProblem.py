@@ -146,7 +146,8 @@ class GameProblem(SearchProblem):
         print('CONFIG: ', self.CONFIG, '\n')
 
         #algorithm= simpleai.search.astar
-        algorithm= simpleai.search.breadth_first
+        algorithm= simpleai.search.greedy
+        #algorithm= simpleai.search.breadth_first
         #algorithm= simpleai.search.depth_first
         #algorithm= simpleai.search.limited_depth_first
 

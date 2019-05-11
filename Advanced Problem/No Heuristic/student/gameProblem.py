@@ -127,9 +127,8 @@ class GameProblem(SearchProblem):
     def heuristic(self, state):
         '''Returns the heuristic for `state`
         '''
-        print('heuristic2(state=', state, ')\n')
-        customersRemaining = sum([1 for c in state[2]])
-        return customersRemaining
+        print('No Heuristic!\n')
+        return 0
 
 
     def setup (self):
